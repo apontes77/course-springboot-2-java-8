@@ -11,24 +11,26 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "tb_order")
 public class Order implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant moment;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private User client;
-	
 
 	public Order() {
-		
+
 	}
 
 	public Order(Long id, Instant moment, User client) {
@@ -37,7 +39,7 @@ public class Order implements Serializable {
 		this.moment = moment;
 		this.client = client;
 	}
-	
+
 	public Long getId() {
 		return Id;
 	}
@@ -61,6 +63,7 @@ public class Order implements Serializable {
 	public void setClient(User client) {
 		this.client = client;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -85,6 +88,5 @@ public class Order implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
+
 }
