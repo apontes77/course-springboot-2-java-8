@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "tb_order")
+@Table(name = "tb_user")
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -35,11 +35,31 @@ public class User implements Serializable {
 	}
 
 	public User(Long id, String name, String email, String phone, String password) {
-		super();
+	
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
+		this.password = password;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -97,6 +117,8 @@ public class User implements Serializable {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", password=" + password
 				+ "]";
 	}
+
+	
 
 	
 
